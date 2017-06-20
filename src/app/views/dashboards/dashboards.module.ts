@@ -9,7 +9,6 @@ import { Dashboard5Component } from "./dashboard5.component";
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { FlotModule } from '../../components/charts/flotChart';
-import { IboxtoolsModule } from '../../components/common/iboxtools/iboxtools.module';
 import { PeityModule } from '../../components/charts/peity';
 import { SparklineModule } from '../../components/charts/sparkline';
 import { JVectorMapModule } from '../../components/map/jvectorMap';
@@ -17,7 +16,7 @@ import { JVectorMapModule } from '../../components/map/jvectorMap';
 
 @NgModule({
   declarations: [Dashboard1Component, Dashboard2Component, Dashboard5Component],
-  imports: [BrowserModule, ChartsModule, FlotModule, IboxtoolsModule, PeityModule, SparklineModule, JVectorMapModule],
+  imports: [BrowserModule, ChartsModule, FlotModule, PeityModule, SparklineModule, JVectorMapModule],
   exports: [Dashboard1Component, Dashboard2Component, Dashboard5Component],
 })
 
