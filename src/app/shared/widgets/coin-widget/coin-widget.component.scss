@@ -1,0 +1,12 @@
+.coin-widget {
+    .ibox-title {
+        border-bottom: 4px solid black;
+        .current-value {
+            margin-top: 0;
+        }
+        .name,
+        .current-value {
+            font-size: 16px;
+        }
+    }
+}

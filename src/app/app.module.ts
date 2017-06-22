@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
 import { SharedModule } from './shared/shared.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { LayoutModule } from './layout/layout.module';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     HttpModule,
     routing,
     SharedModule,
-    DashboardModule
+    AuthenticationModule,
+    LayoutModule
   ],
   bootstrap: [AppComponent]
 })

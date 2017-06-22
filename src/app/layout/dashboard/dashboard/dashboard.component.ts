@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DashboardService } from '../dashboard.service';
+
+import { Coin } from '../../../shared/models/coin';
+
 @Component({
   selector: 'cd-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public coins: Coin[];
+
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.dashboardService.getCoins();
   }
 
 }
