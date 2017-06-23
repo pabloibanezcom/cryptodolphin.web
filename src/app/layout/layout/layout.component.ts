@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { detectBody } from '../../app.helpers';
+
+declare var jQuery: any;
 
 @Component({
   selector: 'cd-layout',
@@ -9,8 +12,12 @@ export class LayoutComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    console.log('layout.component');
+  ngOnInit(): any {
+    detectBody();
+  }
+
+  onResize() {
+    detectBody();
   }
 
 }

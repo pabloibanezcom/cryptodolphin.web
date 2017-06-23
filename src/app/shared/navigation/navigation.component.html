@@ -21,16 +21,19 @@
         </div>
       </li>
       <li [ngClass]="{active: activeRoute('dashboard')}">
-        <a routerLink="['/dashboard']"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
+        <a routerLink="['/dashboard']"><i class="icon-dashboard"></i> <span class="nav-label">Dashboard</span></a>
       </li>
       <li [ngClass]="{active: activeRoute('currency')}">
-        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Currencies</span> <span class="fa arrow"></span> </a>
+        <a href="#"><i class="icon-coins"></i> <span class="nav-label">Currencies</span> <span class="fa arrow"></span> </a>
         <ul class="nav nav-second-level collapse" [ngClass]="{in: activeRoute('dashboards')}">
-          <li [ngClass]="{active: activeRoute('dashboard1')}"><a routerLink="['/dashboard']">Bitcoin (BTC)</a></li>
+          <li [ngClass]="{active: activeRoute('dashboard1')}"><a routerLink="['/dashboard']"><i class="icon-btc"></i>Bitcoin (BTC)</a></li>
+          <li [ngClass]="{active: activeRoute('dashboard1')}"><a routerLink="['/dashboard']"><i class="icon-eth"></i>Ethereum (ETH)</a></li>
+          <li [ngClass]="{active: activeRoute('dashboard1')}"><a routerLink="['/dashboard']"><i class="icon-ltc"></i>Litecoin (LTC)</a></li>
+          <li [ngClass]="{active: activeRoute('dashboard1')}"><a routerLink="['/dashboard']"><i class="icon-xrp"></i>Ripple (XRP)</a></li>
         </ul>
       </li>
       <li [ngClass]="{active: activeRoute('alerts')}">
-        <a routerLink="['/dashboard']"><i class="fa fa-th-large"></i> <span class="nav-label">Alerts</span></a>
+        <a routerLink="['/dashboard']"><i class="icon-bell"></i> <span class="nav-label">Alerts</span></a>
       </li>
     </ul>
 

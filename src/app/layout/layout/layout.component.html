@@ -1,29 +1,25 @@
-<body>
+<!-- Wrapper-->
+<div id="wrapper">
 
-  <!-- Wrapper-->
-  <div id="wrapper">
+  <!-- Left navigation bar -->
+  <cd-navigation></cd-navigation>
 
-    <!-- Left navigation bar -->
-    <cd-navigation></cd-navigation>
+  <!-- Main page wrapper -->
+  <div id="page-wrapper" class="gray-bg">
 
-    <!-- Main page wrapper -->
-    <div id="page-wrapper" class="gray-bg">
+    <!-- Top navigation -->
+    <cd-topnavbar></cd-topnavbar>
 
-      <!-- Top navigation -->
-      <cd-topnavbar></cd-topnavbar>
-
-      <div class="wrapper wrapper-content">
-        <!-- Main view/routes wrapper-->
-        <router-outlet></router-outlet>
-      </div>
-
-      <!-- Footer -->
-      <cd-footer></cd-footer>
-
+    <div class="wrapper wrapper-content">
+      <!-- Main view/routes wrapper-->
+      <router-outlet></router-outlet>
     </div>
-    <!-- End page wrapper-->
+
+    <!-- Footer -->
+    <cd-footer></cd-footer>
 
   </div>
-  <!-- End wrapper-->
+  <!-- End page wrapper-->
 
-</body>
+</div>
+<!-- End wrapper-->
