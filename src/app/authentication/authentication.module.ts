@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FacebookService } from 'ngx-facebook';
+
 import { AuthenticationRouting } from './authentication.routing';
+import { AuthenticationService } from './authentication.service';
 import { LoginComponent } from './login/login.component';
 
 
@@ -9,6 +12,10 @@ import { LoginComponent } from './login/login.component';
   imports: [
     CommonModule,
     AuthenticationRouting
+  ],
+  providers: [
+    FacebookService,
+    AuthenticationService
   ],
   declarations: [LoginComponent]
 })

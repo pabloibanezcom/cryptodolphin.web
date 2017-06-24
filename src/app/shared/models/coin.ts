@@ -12,7 +12,7 @@ export class Coin {
     sortOrder: number;
     color: string;
     fontcolor: string;
-    prices: IPrice[];
+    prices: any;
 
     get imgSrc(): string {
         return '/assets/images/coins/' + name;

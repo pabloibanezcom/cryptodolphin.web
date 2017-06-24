@@ -1,0 +1,25 @@
+body.mini-navbar {
+    .icon-chevron-left {
+        display: none !important;
+    }
+}
+
+.navigation {
+    i[class^='icon-chevron'] {
+        float: right;
+        line-height: 2;
+        font-size: 10px;
+    }
+    .active {
+        i[class^='icon-chevron'] {
+           &::before {
+               content: "\F078";
+           }
+        }
+    }
+    .img-thumbnail {
+        width: 64px;
+        height: 64px;
+    }
+}
+

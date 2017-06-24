@@ -1,12 +1,11 @@
-<nav class="navbar-default navbar-static-side" role="navigation">
+<nav class="navigation navbar-default navbar-static-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav metismenu" id="side-menu">
       <li class="nav-header">
-        <div class="profile-element" dropdown>
-          <img alt="image" class="img-thumbnail" src="assets/images/profile_small.jpg">
+        <div class="profile-element" *ngIf="user" dropdown>
+          <img alt="image" class="img-thumbnail" [src]="user.photo">
           <a dropdownToggle>
-            <span class="block m-t-xs"> <strong class="font-bold">Pablo Ibanez</strong> </span>
-            <span class="text-muted text-xs block">London <b class="caret"></b> </span>
+            <span class="block m-t-xs"> <strong class="font-bold">{{user.name}}</strong> </span>
           </a>
           <ul class="animated fadeInRight dropdown-menu" *dropdownMenu>
             <li><a href="#">Profile</a></li>
@@ -24,7 +23,7 @@
         <a routerLink="['/dashboard']"><i class="icon-dashboard"></i> <span class="nav-label">Dashboard</span></a>
       </li>
       <li [ngClass]="{active: activeRoute('currency')}">
-        <a href="#"><i class="icon-coins"></i> <span class="nav-label">Currencies</span> <span class="fa arrow"></span> </a>
+        <a href="#"><i class="icon-coins"></i> <span class="nav-label">Currencies</span> <i class="icon-chevron-left"></i> </a>
         <ul class="nav nav-second-level collapse" [ngClass]="{in: activeRoute('dashboards')}">
           <li [ngClass]="{active: activeRoute('dashboard1')}"><a routerLink="['/dashboard']"><i class="icon-btc"></i>Bitcoin (BTC)</a></li>
           <li [ngClass]="{active: activeRoute('dashboard1')}"><a routerLink="['/dashboard']"><i class="icon-eth"></i>Ethereum (ETH)</a></li>

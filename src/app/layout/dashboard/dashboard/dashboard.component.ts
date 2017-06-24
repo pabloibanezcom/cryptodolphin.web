@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DashboardService } from '../dashboard.service';
 
-import { Coin } from '../../../shared/models/coin';
+import { Portfolio } from '../../../shared/models/portfolio';
 
 @Component({
   selector: 'cd-dashboard',
@@ -11,12 +11,12 @@ import { Coin } from '../../../shared/models/coin';
 })
 export class DashboardComponent implements OnInit {
 
-  public coins: Coin[];
+  public portfolio: Portfolio;
 
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
-    this.dashboardService.getCoins();
+    this.dashboardService.getPortfolios().subscribe(result => this.portfolio = result[0]);
   }
 
 }

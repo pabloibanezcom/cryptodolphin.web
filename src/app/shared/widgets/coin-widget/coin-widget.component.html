@@ -1,7 +1,10 @@
 <div class="coin-widget">
   <div class="ibox float-e-margins">
     <div class="ibox-title" [style.border-bottom-color]="coin.color" >
-      <h5 class="name">{{coin.coinName}}</h5>
+      <h5 class="name">
+        <i [style.color]="coin.color" class="icon-{{coin.name | lowercase}}-circle coin-icon"></i>
+        {{coin.coinName}}
+        </h5>
       <h3 class="current-value pull-right">$ 2,712.83</h3>
     </div>
     <div class="ibox-content">
