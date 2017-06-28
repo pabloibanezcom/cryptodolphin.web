@@ -9,6 +9,7 @@ import { Coin } from '../../models/coin';
 export class CoinWidgetComponent implements OnInit {
 
   @Input() coin: Coin;
+  @Input() history: any;
 
   constructor() { }
 

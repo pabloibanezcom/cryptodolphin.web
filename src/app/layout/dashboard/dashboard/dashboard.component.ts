@@ -16,7 +16,13 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
-    this.dashboardService.getPortfolios().subscribe(result => this.portfolio = result[0]);
+    this.dashboardService.getPortfolios().subscribe(portfolios => {
+      this.portfolio = portfolios[0];
+      this.dashboardService.getBalances(this.portfolio._id).subscribe(balances => {
+        this.portfolio.balances = balances;
+        console.log(this.portfolio);
+      });
+    });
   }
 
 }

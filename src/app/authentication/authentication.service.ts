@@ -50,7 +50,6 @@ export class AuthenticationService {
 
   // Facebook API call for getting user data
   private getFacebookData(response: LoginResponse) {
-    console.log(response);
     this.authData = new AuthData(response.authResponse.accessToken,
       response.authResponse.userID, this.getExpirationDate(response.authResponse.expiresIn));
     localStorage.setItem('auth', JSON.stringify(this.authData));

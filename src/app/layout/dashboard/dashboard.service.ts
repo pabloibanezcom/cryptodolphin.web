@@ -34,6 +34,10 @@ export class DashboardService {
     return this.http.get('assets/data/coins.json');
   }
 
+  getBalances(portfolioId: string) {
+    return this.http.get('portfolio/' + portfolioId + '/balances');
+  }
+
   refreshPrice(coins: Coin[]) {
     this.cryptocompareService.coinPrices()
       .subscribe(coinPrices => this.setCurrenciesPrice(coins, JSON.parse(coinPrices['_body'])));
