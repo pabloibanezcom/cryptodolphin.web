@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CryptocompareService } from '../../../shared/services/cryptocompare.service';
 import { DashboardService } from '../dashboard.service';
 
 import { Portfolio } from '../../../shared/models/portfolio';
@@ -12,16 +13,22 @@ import { Portfolio } from '../../../shared/models/portfolio';
 export class DashboardComponent implements OnInit {
 
   public portfolio: Portfolio;
+  public prices: any;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(
+    private cryptocompareService: CryptocompareService,
+    private dashboardService: DashboardService
+  ) { }
 
   ngOnInit() {
     this.dashboardService.getPortfolios().subscribe(portfolios => {
       this.portfolio = portfolios[0];
       this.dashboardService.getBalances(this.portfolio._id).subscribe(balances => {
         this.portfolio.balances = balances;
-        console.log(this.portfolio);
       });
+    });
+    this.cryptocompareService.coinPrices().subscribe(prices => {
+      this.prices = prices;
     });
   }
 

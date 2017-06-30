@@ -6,10 +6,23 @@
         }
         .name,
         .current-value {
-            font-size: 16px;
+            font-size: 14px;
         }
         .coin-icon {
             margin-right: 10px;
+        }
+    }
+    .ibox-content {
+        .total-value {
+            span {
+                font-size: 20px;
+            }
+        }
+        .coins {
+            margin-top: 10px;
+            span {
+                font-size: 16px;
+            }
         }
     }
 }
