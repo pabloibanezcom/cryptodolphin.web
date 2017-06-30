@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CurrencySelectorService } from './currency-selector.service';
-import { ICurrency } from './currency';
+import { ICurrency } from './ICurrency';
 
 @Component({
   selector: 'cd-currency-selector',

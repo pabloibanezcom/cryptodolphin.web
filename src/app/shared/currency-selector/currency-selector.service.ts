@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs/Rx';
 
-import { DataService } from '../../services/data.service';
-import { ICurrency } from './currency';
+import { DataService } from '../services/data.service';
+import { ICurrency } from './ICurrency';
 
 @Injectable()
 export class CurrencySelectorService {
