@@ -8,6 +8,7 @@ import { LayoutService } from './layout.service';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LayoutComponent } from './layout/layout.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { LayoutComponent } from './layout/layout.component';
     LayoutService
   ],
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    LoadingScreenComponent
   ]
 })
 export class LayoutModule { }

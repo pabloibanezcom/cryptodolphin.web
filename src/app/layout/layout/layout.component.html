@@ -1,22 +1,10 @@
-<div [ngClass]="{'loading': !loaded}">
+<div>
   <!-- Loading screen-->
-  <div class="loading-screen">
-    <div class="sk-spinner sk-spinner-cube-grid">
-      <div class="sk-cube"></div>
-      <div class="sk-cube"></div>
-      <div class="sk-cube"></div>
-      <div class="sk-cube"></div>
-      <div class="sk-cube"></div>
-      <div class="sk-cube"></div>
-      <div class="sk-cube"></div>
-      <div class="sk-cube"></div>
-      <div class="sk-cube"></div>
-    </div>
-  </div>
+  <cd-loading-screen [hidden]="loaded"></cd-loading-screen>
   <!-- End loading screen-->
 
   <!-- Wrapper-->
-  <div id="wrapper">
+  <div id="wrapper" [hidden]="!loaded">
 
     <!-- Left navigation bar -->
     <cd-navigation></cd-navigation>
