@@ -12,7 +12,7 @@ export class PercentageLabelComponent implements OnInit, OnChanges {
   @Input() showDiff: boolean;
   @Input() currencyCode: string;
 
-  private pct: number;
+  public pct: number;
 
   constructor() { }
 

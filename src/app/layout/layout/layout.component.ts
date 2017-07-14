@@ -12,7 +12,7 @@ declare var jQuery: any;
 })
 export class LayoutComponent implements OnInit {
 
-  private loaded: boolean;
+  public loaded: boolean;
 
   constructor(private layoutService: LayoutService) {
     this.layoutService.observeLoaded().subscribe(loaded => {

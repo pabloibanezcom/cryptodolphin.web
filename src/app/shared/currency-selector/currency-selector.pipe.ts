@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
-import { ICurrency } from './ICurrency';
+import { Currency } from './currency';
 
 @Pipe({
   name: 'currencySelector'
@@ -15,7 +15,7 @@ export class CurrencySelectorPipe implements PipeTransform {
   ) {
   }
 
-  transform(value: any, currency: ICurrency): any {
+  transform(value: any, currency: Currency): any {
 
     if (!value) {
       return null;

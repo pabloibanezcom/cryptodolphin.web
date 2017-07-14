@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Coin } from '../../models/coin';
-import { ICurrency } from '../../currency-selector/ICurrency';
+import { Currency } from '../../currency-selector/currency';
 
 @Component({
   selector: 'cd-coin-widget',
@@ -11,7 +11,7 @@ export class CoinWidgetComponent {
 
   @Input() coin: Coin;
   @Input() price: any;
-  @Input() currency: ICurrency;
+  @Input() currency: Currency;
 
   constructor() {
   }

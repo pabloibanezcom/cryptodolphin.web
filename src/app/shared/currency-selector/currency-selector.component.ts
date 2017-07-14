@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CurrencySelectorService } from './currency-selector.service';
-import { ICurrency } from './ICurrency';
+import { Currency } from './currency';
 
 @Component({
   selector: 'cd-currency-selector',
@@ -10,8 +10,8 @@ import { ICurrency } from './ICurrency';
 })
 export class CurrencySelectorComponent implements OnInit {
 
-  currencies: ICurrency[];
-  selectedCurrency: ICurrency;
+  currencies: Currency[];
+  selectedCurrency: Currency;
   showMenu: boolean;
 
   constructor(private currencySelectorService: CurrencySelectorService) {
@@ -24,7 +24,7 @@ export class CurrencySelectorComponent implements OnInit {
     this.currencySelectorService.getCurrency().subscribe(currency => this.selectedCurrency = currency);
   }
 
-  selectCurrency(currency: ICurrency): void {
+  selectCurrency(currency: Currency): void {
     this.selectedCurrency = currency;
     this.currencySelectorService.setCurrency(currency);
     this.showMenu = false;

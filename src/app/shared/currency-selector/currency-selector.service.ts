@@ -2,23 +2,23 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
 import { DataService } from '../services/data.service';
-import { ICurrency } from './ICurrency';
+import { Currency } from './currency';
 
 @Injectable()
 export class CurrencySelectorService {
 
     private currency: BehaviorSubject<any>;
-    private currencyObservable: Observable<{}>;
+    private currencyObservable: Observable<Currency>;
 
     constructor(private dataService: DataService) {
         this.currency = new BehaviorSubject({});
     }
 
-    getCurrencies(): Observable<ICurrency[]> {
+    getCurrencies(): Observable<Currency[]> {
         return this.dataService.get('currencies');
     }
 
-    getCurrency(): Observable<ICurrency> {
+    getCurrency(): Observable<Currency> {
         const currency = JSON.parse(localStorage.getItem('currency'));
         if (!currency) {
             this.getCurrencies().subscribe(currencies => {
@@ -31,14 +31,14 @@ export class CurrencySelectorService {
         return this.currency;
     }
 
-    observeCurrency(): Observable<ICurrency> {
+    observeCurrency(): Observable<Currency> {
         if (!this.currencyObservable) {
             this.currencyObservable = this.currency.asObservable();
         }
         return this.currencyObservable.share();
     }
 
-    setCurrency(currency: ICurrency): void {
+    setCurrency(currency: Currency): void {
         localStorage.setItem('currency', JSON.stringify(currency));
         this.currency.next(currency);
     }

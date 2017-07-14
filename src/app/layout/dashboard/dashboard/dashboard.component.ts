@@ -6,7 +6,7 @@ import { DashboardService } from '../dashboard.service';
 import { CurrencySelectorService } from '../../../shared/currency-selector/currency-selector.service';
 
 import { Portfolio } from '../../../shared/models/portfolio';
-import { ICurrency } from '../../../shared/currency-selector/icurrency';
+import { Currency } from '../../../shared/currency-selector/currency';
 
 @Component({
   selector: 'cd-dashboard',
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   public portfolio: Portfolio;
   public prices: any;
-  public currency: ICurrency;
+  public currency: Currency;
 
   constructor(
     private layoutService: LayoutService,
