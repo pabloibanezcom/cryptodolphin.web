@@ -1,0 +1,30 @@
+[
+    {
+        "name": "1 Hour",
+        "timeStampDiff": 3600
+    },
+    {
+        "name": "1 Day",
+        "timeStampDiff": 86400
+    },
+    {
+        "name": "1 Week",
+        "timeStampDiff": 604800
+    },
+    {
+        "name": "1 Month",
+        "timeStampDiff": 2592000
+    },
+    {
+        "name": "3 Months",
+        "timeStampDiff": 7776000
+    },
+    {
+        "name": "6 Months",
+        "timeStampDiff": 15552000
+    },
+    {
+        "name": "1 Year",
+        "timeStampDiff": 31536000
+    }
+]

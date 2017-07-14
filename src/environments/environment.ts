@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:3000/api/',
-  // api_url: 'https://cryptodolphin-api.herokuapp.com/api/',
+  // api_url: 'http://localhost:3000/api/',
+  api_url: 'https://cryptodolphin-api.herokuapp.com/api/',
   fb_app_id: '822675667901541',
   refreshInterval: 5000
 };

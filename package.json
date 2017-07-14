@@ -10,7 +10,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot -prod",
-    "push": "npm run postinstall && git push"
+    "push": "npm run postinstall && git push",
+    "docs": "node_modules/.bin/compodoc -p tsconfig.json -d docs --theme readthedocs",
+    "serve-docs": "node_modules/.bin/compodoc -s -d docs "
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,7 @@
     "jquery-sparkline": "^2.4.0",
     "jvectormap": "1.2.2",
     "metismenu": "^2.5.0",
+    "ng-click-outside": "^2.3.5",
     "ng2-charts": "^1.5.0",
     "ngx-facebook": "^2.4.0",
     "peity": "^3.2.1",

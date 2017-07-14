@@ -4,7 +4,9 @@
       <h5 class="name">
         <i [style.color]="coin.color" class="icon-{{coin.name | lowercase}}-circle coin-icon"></i> {{coin.fullName}}
       </h5>
-      <div *ngIf="price" class="label label-primary current-value pull-right">{{price['USD']}}</div>
+      <div *ngIf="price && price.current && currency" class="label current-value pull-right" 
+      [ngClass]="{'label-primary': price.current[currency.code] > price.previous[currency.code], 'label-danger': price.current[currency.code] < price.previous[currency.code]}">
+        {{ price.current | currencySelector : currency}}</div>
     </div>
     <div class="ibox-content">
       <div class="total-value">
@@ -15,6 +17,11 @@
       <div class="coins">
         <div><span class="no-margins">1.94512478</span></div>
         <small>Coins</small>
+      </div>
+      <div class="coins">
+        <div *ngIf="price.previous"><span class="no-margins">{{ price.previous | currencySelector : currency}}</span></div>
+        <cd-percentage-label [numberA]="price.previous[currency.code]" [numberB]="price.current[currency.code]" [currencyCode]="currency.code"></cd-percentage-label>
+        <small>Price {{price.previous.period.name}} ago</small>
       </div>
     </div>
   </div>

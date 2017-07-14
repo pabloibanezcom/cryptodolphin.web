@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import { LayoutService } from '../../layout.service';
 import { CryptocompareService } from '../../../shared/services/cryptocompare.service';
 import { DashboardService } from '../dashboard.service';
+import { CurrencySelectorService } from '../../../shared/currency-selector/currency-selector.service';
 
 import { Portfolio } from '../../../shared/models/portfolio';
+import { ICurrency } from '../../../shared/currency-selector/icurrency';
 
 @Component({
   selector: 'cd-dashboard',
@@ -14,10 +17,13 @@ export class DashboardComponent implements OnInit {
 
   public portfolio: Portfolio;
   public prices: any;
+  public currency: ICurrency;
 
   constructor(
+    private layoutService: LayoutService,
     private cryptocompareService: CryptocompareService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private currencySelectorService: CurrencySelectorService
   ) { }
 
   ngOnInit() {
@@ -25,10 +31,14 @@ export class DashboardComponent implements OnInit {
       this.portfolio = portfolios[0];
       this.dashboardService.getBalances(this.portfolio._id).subscribe(balances => {
         this.portfolio.balances = balances;
+        this.layoutService.setLoaded();
       });
     });
     this.cryptocompareService.coinPrices().subscribe(prices => {
       this.prices = prices;
+    });
+    this.currencySelectorService.observeCurrency().subscribe(currency => {
+      this.currency = currency;
     });
   }
 

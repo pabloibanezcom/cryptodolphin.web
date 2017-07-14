@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { detectBody } from '../../app.helpers';
 
+import { LayoutService } from '../layout.service';
+
 declare var jQuery: any;
 
 @Component({
@@ -10,7 +12,13 @@ declare var jQuery: any;
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  private loaded: boolean;
+
+  constructor(private layoutService: LayoutService) {
+    this.layoutService.observeLoaded().subscribe(loaded => {
+      this.loaded = loaded;
+    });
+  }
 
   ngOnInit(): any {
     detectBody();

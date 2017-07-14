@@ -1,25 +1,43 @@
-<!-- Wrapper-->
-<div id="wrapper">
-
-  <!-- Left navigation bar -->
-  <cd-navigation></cd-navigation>
-
-  <!-- Main page wrapper -->
-  <div id="page-wrapper" class="gray-bg">
-
-    <!-- Top navigation -->
-    <cd-topnavbar></cd-topnavbar>
-
-    <div class="wrapper wrapper-content">
-      <!-- Main view/routes wrapper-->
-      <router-outlet></router-outlet>
+<div [ngClass]="{'loading': !loaded}">
+  <!-- Loading screen-->
+  <div class="loading-screen">
+    <div class="sk-spinner sk-spinner-cube-grid">
+      <div class="sk-cube"></div>
+      <div class="sk-cube"></div>
+      <div class="sk-cube"></div>
+      <div class="sk-cube"></div>
+      <div class="sk-cube"></div>
+      <div class="sk-cube"></div>
+      <div class="sk-cube"></div>
+      <div class="sk-cube"></div>
+      <div class="sk-cube"></div>
     </div>
+  </div>
+  <!-- End loading screen-->
 
-    <!-- Footer -->
-    <cd-footer></cd-footer>
+  <!-- Wrapper-->
+  <div id="wrapper">
+
+    <!-- Left navigation bar -->
+    <cd-navigation></cd-navigation>
+
+    <!-- Main page wrapper -->
+    <div id="page-wrapper" class="gray-bg">
+
+      <!-- Top navigation -->
+      <cd-topnavbar></cd-topnavbar>
+
+      <div class="wrapper wrapper-content">
+        <!-- Main view/routes wrapper-->
+        <router-outlet></router-outlet>
+      </div>
+
+      <!-- Footer -->
+      <cd-footer></cd-footer>
+
+    </div>
+    <!-- End page wrapper-->
 
   </div>
-  <!-- End page wrapper-->
-
+  <!-- End wrapper-->
 </div>
-<!-- End wrapper-->

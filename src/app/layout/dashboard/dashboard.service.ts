@@ -23,15 +23,11 @@ export class DashboardService {
   }
 
   getAll() {
-    this.getCoins().subscribe(coins => this.refreshPrice(coins));
+    this.coinsService.getCoins().subscribe(coins => this.refreshPrice(coins));
   }
 
   getPortfolios() {
     return this.http.get('portfolios');
-  }
-
-  getCoins() {
-    return this.http.get('assets/data/coins.json');
   }
 
   getBalances(portfolioId: string) {

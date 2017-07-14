@@ -1,0 +1,15 @@
+<div class="period-selector" *ngIf="selectedPeriod" >
+  <a (click)="showMenu = !showMenu" ><span>{{selectedPeriod.name}}</span></a>
+  <ul *ngIf="showMenu" class="dropdown-menu dropdown-alerts">
+    <ng-container *ngFor="let period of periods; index as i">
+      <li>
+      <a (click)="selectPeriod(period)">
+        <div class="period-element" >
+          {{period.name}}
+        </div>
+      </a>
+    </li>
+    <li *ngIf="i < (periods.length - 1)" class="divider"></li>
+    </ng-container>
+  </ul>
+</div>

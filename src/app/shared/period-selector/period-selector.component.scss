@@ -1,19 +1,14 @@
-.currency-selector {
-
+.period-selector {
     a {
         color: #999c9e;
         font-weight: 600;
     }
-
-    .flag {
-        width: 16x;
-        height: 16px;
-        margin: -4px 8px 0 0;
-    }
-
     .dropdown-menu {
         display: block;
         margin-top: 10px;
-        width: 250px;
+        width: 150px;
+        .period-element {
+            text-align: right;
+        }
     }
 }

@@ -1,11 +1,11 @@
 <div class="currency-selector" *ngIf="selectedCurrency">
-  <a (click)="showMenu = !showMenu"><img class="flag" src="assets/images/currencies/{{selectedCurrency.code | lowercase}}.png" /><span>{{selectedCurrency.code}}</span></a>
+  <a (click)="showMenu = !showMenu"><img *ngIf="selectedCurrency.code" class="flag" src="assets/images/currencies/{{selectedCurrency.code | lowercase}}.png" /><span>{{selectedCurrency.code}}</span></a>
   <ul *ngIf="showMenu" class="dropdown-menu dropdown-alerts">
     <ng-container *ngFor="let currency of currencies; index as i">
       <li>
       <a (click)="selectCurrency(currency)">
         <div>
-          <img class="flag" src="assets/images/currencies/{{currency.code | lowercase}}.png" /> {{currency.code}}
+          <img *ngIf="selectedCurrency.code" class="flag" src="assets/images/currencies/{{currency.code | lowercase}}.png" /> {{currency.code}}
           <span class="pull-right text-muted small">{{currency.name}}</span>
         </div>
       </a>

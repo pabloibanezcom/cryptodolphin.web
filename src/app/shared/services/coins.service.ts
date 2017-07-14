@@ -29,21 +29,22 @@ export class CoinsService {
     });
   }
 
+  getCoinsString(coins: Coin[]): string {
+    let result = '';
+    coins.forEach(coin => {
+      result += coin.name + ',';
+    });
+    return result.substring(0, result.length - 1);
+  }
+
   private createObservable(data: any): Observable<any> {
-    return Observable.create(function (observer) {
+    return Observable.create(observer => {
       observer.next(data);
       observer.complete();
     });
   }
 
   private getHttpCoins(): Observable<any> {
-    return this.httpService.get('coins')
-      .map(res => res.json())
-      .catch(this.handleError);
+    return this.httpService.get('coins');
   }
-
-  private handleError(error: Response) {
-    return Observable.throw(error.json().error || '500 internal server error');
-  }
-
 }
