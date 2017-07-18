@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { CurrencyPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 
 import { FooterComponent } from './footer/footer.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -15,6 +15,7 @@ import { CurrencySelectorComponent } from './currency-selector/currency-selector
 import { CurrencySelectorPipe } from './currency-selector/currency-selector.pipe';
 import { PeriodSelectorComponent } from './period-selector/period-selector.component';
 import { PercentageLabelComponent } from './percentage-label/percentage-label.component';
+import { CdCurrencyPipe } from './pipes/cd-currency.pipe';
 
 @NgModule({
   imports: [
@@ -32,10 +33,11 @@ import { PercentageLabelComponent } from './percentage-label/percentage-label.co
     CurrencySelectorComponent,
     CurrencySelectorPipe,
     PeriodSelectorComponent,
-    PercentageLabelComponent
+    PercentageLabelComponent,
+    CdCurrencyPipe
   ],
   providers: [
-    CurrencyPipe
+    DecimalPipe
   ],
   exports: [
     FooterComponent,
@@ -43,7 +45,8 @@ import { PercentageLabelComponent } from './percentage-label/percentage-label.co
     TopnavbarComponent,
     CoinWidgetComponent,
     TransactionsTableComponent,
-    CoinHistoryPipe
+    CoinHistoryPipe,
+    CdCurrencyPipe
   ]
 })
 export class SharedModule { }

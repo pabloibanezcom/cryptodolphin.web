@@ -14,6 +14,8 @@ export class Coin {
     fontcolor: string;
     prices: any;
 
+    balances: any[];
+
     get imgSrc(): string {
         return '/assets/images/coins/' + name;
     }

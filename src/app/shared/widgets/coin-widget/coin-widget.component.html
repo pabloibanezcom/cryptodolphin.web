@@ -10,17 +10,17 @@
     </div>
     <div class="ibox-content">
       <div class="total-value">
-        <div><span class="no-margins">40 886,200</span></div>
-        <div class="stat-percent font-bold text-success">98% <i class="icon-bolt"></i></div>
+        <div><span class="no-margins">{{(coin.balances[0].amount * price.current[currency.code]) | cdCurrency:currency}}</span></div>
+        <cd-percentage-label [numberA]="coin.balances[0].amount * price.previous[currency.code]" [numberB]="coin.balances[0].amount * price.current[currency.code]" [currencyCode]="currency.code" [hidePct]="true"></cd-percentage-label>
         <small>Total value</small>
       </div>
       <div class="coins">
-        <div><span class="no-margins">1.94512478</span></div>
+        <div><span class="no-margins">{{coin.balances[0].amount}}</span></div>
         <small>Coins</small>
       </div>
       <div class="coins">
         <div *ngIf="price.previous"><span class="no-margins">{{ price.previous | currencySelector : currency}}</span></div>
-        <cd-percentage-label [numberA]="price.previous[currency.code]" [numberB]="price.current[currency.code]" [currencyCode]="currency.code"></cd-percentage-label>
+        <cd-percentage-label [numberA]="price.previous[currency.code]" [numberB]="price.current[currency.code]" [currencyCode]="currency.code" [hideAbs]="true"></cd-percentage-label>
         <small>Price {{price.previous.period.name}} ago</small>
       </div>
     </div>

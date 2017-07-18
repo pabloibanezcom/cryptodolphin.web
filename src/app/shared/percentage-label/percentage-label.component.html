@@ -1,4 +1,5 @@
 <div class="percentage-label stat-percent font-bold" [ngClass]="{'text-info': pct > 0, 'text-danger': pct < 0}">
-  {{(numberB - numberA | currency:currencyCode:true:'1.2-2')}}
-  ({{pct}}%)
+  <span *ngIf="!hideAbs">{{(numberB - numberA | currency:currencyCode:true:'1.2-2')}}</span>
+  <span *ngIf="!hidePct && !hideAbs">({{pct}}%)</span>
+  <span *ngIf="!hidePct && hideAbs">{{pct}}%</span>
   <i [ngClass]="{'icon-level-up': pct > 0, 'icon-level-down': pct < 0}"></i></div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Coin } from '../../models/coin';
 import { Currency } from '../../currency-selector/currency';
 
@@ -7,13 +7,17 @@ import { Currency } from '../../currency-selector/currency';
   templateUrl: './coin-widget.component.html',
   styleUrls: ['./coin-widget.component.scss']
 })
-export class CoinWidgetComponent {
+export class CoinWidgetComponent implements OnInit {
 
   @Input() coin: Coin;
   @Input() price: any;
   @Input() currency: Currency;
 
   constructor() {
+  }
+
+  ngOnInit() {
+    console.log(this.coin);
   }
 
 }

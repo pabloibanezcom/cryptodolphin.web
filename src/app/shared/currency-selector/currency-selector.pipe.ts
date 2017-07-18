@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 
 import { Currency } from './currency';
 
@@ -11,7 +11,7 @@ export class CurrencySelectorPipe implements PipeTransform {
   private currencyCode: string;
 
   constructor(
-    private currencyPipe: CurrencyPipe
+    private decimalPipe: DecimalPipe
   ) {
   }
 
@@ -21,7 +21,7 @@ export class CurrencySelectorPipe implements PipeTransform {
       return null;
     }
 
-    return this.currencyPipe.transform(value[currency.code], currency.code, true);
+    return currency.symbol + ' ' + this.decimalPipe.transform(value[currency.code], '.2-2');
   }
 
 }
