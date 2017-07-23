@@ -1,15 +1,15 @@
-<div class="coin-widget">
+<div class="coin-widget" *ngIf="price && price.current && price.previous && currency">
   <div class="ibox float-e-margins">
     <div class="ibox-title" [style.border-bottom-color]="coin.color">
       <h5 class="name">
         <i [style.color]="coin.color" class="icon-{{coin.name | lowercase}}-circle coin-icon"></i> {{coin.fullName}}
       </h5>
-      <div *ngIf="price && price.current && currency" class="label current-value pull-right" 
+      <div class="label current-value pull-right" 
       [ngClass]="{'label-primary': price.current[currency.code] > price.previous[currency.code], 'label-danger': price.current[currency.code] < price.previous[currency.code]}">
         {{ price.current | currencySelector : currency}}</div>
     </div>
     <div class="ibox-content">
-      <div class="total-value">
+      <div class="total-value" >
         <div><span class="no-margins">{{(coin.balances[0].amount * price.current[currency.code]) | cdCurrency:currency}}</span></div>
         <cd-percentage-label [numberA]="coin.balances[0].amount * price.previous[currency.code]" [numberB]="coin.balances[0].amount * price.current[currency.code]" [currencyCode]="currency.code" [hidePct]="true"></cd-percentage-label>
         <small>Total value</small>

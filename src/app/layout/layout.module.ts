@@ -6,8 +6,8 @@ import { LayoutRouting } from './layout.routing'
 import { LayoutService } from './layout.service';
 
 import { SharedModule } from '../shared/shared.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { LayoutComponent } from './layout/layout.component';
+import { PortfolioModule } from './portfolio/portfolio.module';
+import { LayoutBaseComponent } from './layout-base/layout-base.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 @NgModule({
@@ -15,13 +15,13 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
     CommonModule,
     LayoutRouting,
     SharedModule,
-    DashboardModule
+    PortfolioModule
   ],
   providers: [
     LayoutService
   ],
   declarations: [
-    LayoutComponent,
+    LayoutBaseComponent,
     LoadingScreenComponent
   ]
 })

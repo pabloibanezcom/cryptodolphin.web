@@ -17,7 +17,6 @@ export class CoinWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.coin);
   }
 
 }

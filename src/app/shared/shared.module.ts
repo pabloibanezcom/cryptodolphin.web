@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { DecimalPipe } from '@angular/common';
 
+import { ChartsModule } from 'ng2-charts';
+
 import { FooterComponent } from './footer/footer.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { TopnavbarComponent } from './topnavbar/topnavbar.component';
@@ -16,11 +18,13 @@ import { CurrencySelectorPipe } from './currency-selector/currency-selector.pipe
 import { PeriodSelectorComponent } from './period-selector/period-selector.component';
 import { PercentageLabelComponent } from './percentage-label/percentage-label.component';
 import { CdCurrencyPipe } from './pipes/cd-currency.pipe';
+import { PortfolioOverviewComponent } from './portfolio-overview/portfolio-overview.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ChartsModule
   ],
   declarations: [
     FooterComponent,
@@ -34,7 +38,8 @@ import { CdCurrencyPipe } from './pipes/cd-currency.pipe';
     CurrencySelectorPipe,
     PeriodSelectorComponent,
     PercentageLabelComponent,
-    CdCurrencyPipe
+    CdCurrencyPipe,
+    PortfolioOverviewComponent
   ],
   providers: [
     DecimalPipe
@@ -44,6 +49,7 @@ import { CdCurrencyPipe } from './pipes/cd-currency.pipe';
     NavigationComponent,
     TopnavbarComponent,
     CoinWidgetComponent,
+    PortfolioOverviewComponent,
     TransactionsTableComponent,
     CoinHistoryPipe,
     CdCurrencyPipe

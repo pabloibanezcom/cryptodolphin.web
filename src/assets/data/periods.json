@@ -1,30 +1,51 @@
 [
     {
         "name": "1 Hour",
-        "timeStampDiff": 3600
+        "timeStampDiff": 3600,
+        "historyUrl": "histominute",
+        "aggregate": 1,
+        "limit": 60
     },
     {
         "name": "1 Day",
-        "timeStampDiff": 86400
+        "timeStampDiff": 86400,
+        "historyUrl": "histominute",
+        "aggregate": 10,
+        "limit": 144
     },
     {
         "name": "1 Week",
-        "timeStampDiff": 604800
+        "timeStampDiff": 604800,
+        "historyUrl": "histohour",
+        "aggregate": 1,
+        "limit": 168
     },
     {
         "name": "1 Month",
-        "timeStampDiff": 2592000
+        "timeStampDiff": 2592000,
+        "historyUrl": "histohour",
+        "aggregate": 6,
+        "limit": 120
     },
     {
         "name": "3 Months",
-        "timeStampDiff": 7776000
+        "timeStampDiff": 7776000,
+        "historyUrl": "histoday",
+        "aggregate": 1,
+        "limit": 90
     },
     {
         "name": "6 Months",
-        "timeStampDiff": 15552000
+        "timeStampDiff": 15552000,
+        "historyUrl": "histoday",
+        "aggregate": 1,
+        "limit": 180
     },
     {
         "name": "1 Year",
-        "timeStampDiff": 31536000
+        "timeStampDiff": 31536000,
+        "historyUrl": "histoday",
+        "aggregate": 1,
+        "limit": 365
     }
 ]

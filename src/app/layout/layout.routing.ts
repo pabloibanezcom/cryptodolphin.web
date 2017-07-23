@@ -1,14 +1,14 @@
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutBaseComponent } from './layout-base/layout-base.component';
 import { AuthenticationGuard } from '../authentication/authentication.guard';
 
 const layoutRoutes: Routes = [
     {
         path: '',
-        component: LayoutComponent,
+        component: LayoutBaseComponent,
         canActivate: [AuthenticationGuard],
         children: [
-            { path: 'dashboard', loadChildren: 'app/layout/dashboard/dashboard.module#DashboardModule' },
+            { path: 'portfolio', loadChildren: 'app/layout/portfolio/portfolio.module#PortfolioModule' },
         ]
     }
 ];

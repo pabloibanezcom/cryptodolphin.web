@@ -53,7 +53,7 @@ export class AuthenticationService {
     this.authData = new AuthData(response.authResponse.accessToken,
       response.authResponse.userID, this.getExpirationDate(response.authResponse.expiresIn));
     localStorage.setItem('auth', JSON.stringify(this.authData));
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/portfolio']);
   }
 
   private getExpirationDate(expiresIn: number): Date {

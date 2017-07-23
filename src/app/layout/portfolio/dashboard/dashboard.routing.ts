@@ -1,10 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardBaseComponent } from './dashboard-base/dashboard-base.component';
 
 const dashboardRoutes: Routes = [
     {
         path: '',
-        component: DashboardComponent
+        component: DashboardBaseComponent
     }
 ];
 

@@ -6,11 +6,11 @@ import { LayoutService } from '../layout.service';
 declare var jQuery: any;
 
 @Component({
-  selector: 'cd-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  selector: 'cd-layout-base',
+  templateUrl: './layout-base.component.html',
+  styleUrls: ['./layout-base.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class LayoutBaseComponent implements OnInit {
 
   public loaded: boolean;
 

@@ -4,16 +4,15 @@ import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
 import { environment } from '../../../environments/environment';
 
+import { CryptocompareHistoryService } from './cryptocompare.history.service';
 import { CoinsService } from './coins.service';
 import { Coin } from '../models/coin';
 
-import { PeriodSelectorService } from '../period-selector/period-selector.service';
 import { Period } from '../period-selector/period';
 
 @Injectable()
 export class CryptocompareService {
 
-  private prices: any;
   private prices$: BehaviorSubject<any>;
   private pricesObservable$: Observable<any>;
 
@@ -25,10 +24,9 @@ export class CryptocompareService {
 
   constructor(
     private http: Http,
-    private coinsService: CoinsService,
-    private periodSelectorService: PeriodSelectorService
+    private cryptocompareHistoryService: CryptocompareHistoryService,
+    private coinsService: CoinsService
   ) {
-    this.prices = [];
     this.prices$ = new BehaviorSubject([]);
     this.currenciesString = 'USD,EUR,GBP';
 
@@ -36,8 +34,6 @@ export class CryptocompareService {
     this.coinsService.getCoins().subscribe(coins => {
       this.coins = coins;
       this.coinsString = this.coinsService.getCoinsString(this.coins);
-      this.createPricesObject();
-      this.autoWatchPeriod();
       this.autoWatchCoinPrices();
     });
   }
@@ -49,25 +45,51 @@ export class CryptocompareService {
     return this.pricesObservable$.share();
   }
 
+  coinHistory(currency: string, period: Period): Observable<any> {
+    return this.cryptocompareHistoryService.getHistory(this.coins, currency, period);
+  }
+
+  getCoinPricesForPeriod(coins: Coin[], period: Period): Observable<any> {
+    const updatedPeriod = this.getPeriodTimeStamp(period);
+    const requests = this.generateCoinPricesRequests(this.coins, updatedPeriod.timeStamp);
+    const result = {};
+    return Observable.create(observer => {
+      Observable.forkJoin(requests).subscribe(responses => {
+        responses.forEach(res => {
+          this.updatePreviousPrice(result, JSON.parse(res['_body']), updatedPeriod);
+        });
+        observer.next(result);
+      });
+    });
+  }
+
+  updatePrices(prices: any, currentPrices: any, previousPrices: any) {
+    if (currentPrices) {
+      this.updatePricesFromObject(prices, currentPrices, 'current');
+    }
+    if (previousPrices) {
+      this.updatePricesFromObject(prices, previousPrices, 'previous');
+    }
+    return prices;
+  }
+
+  private updatePricesFromObject(prices: any, pricesSet: any, timeLabel: string) {
+    for (const property in pricesSet) {
+        if (pricesSet.hasOwnProperty(property)) {
+          if (!prices[property]) {
+            prices[property] = {};
+          }
+          prices[property][timeLabel] = pricesSet[property];
+        }
+      }
+  }
+
   private getCoinPrices(): Observable<Response> {
     return this.http.get(this.baseUrl + '/pricemulti?fsyms=' + this.coinsString + '&tsyms=' + this.currenciesString);
   }
 
   private getCoinPricesHistorical(coinCode: string, timeStamp: string): Observable<Response> {
     return this.http.get(this.baseUrl + '/pricehistorical?fsym=' + coinCode + '&tsyms=' + this.currenciesString + '&ts=' + timeStamp);
-  }
-
-  private getCoinPricesForPeriod(period: Period): Observable<any> {
-    const updatedPeriod = this.getPeriodTimeStamp(period);
-    const requests = this.generateCoinPricesRequests(this.coins, updatedPeriod.timeStamp);
-    return Observable.create(observer => {
-      Observable.forkJoin(requests).subscribe(responses => {
-        responses.forEach(res => {
-          this.setPreviousPrice(JSON.parse(res['_body']), updatedPeriod);
-        });
-        observer.next();
-      });
-    });
   }
 
   private generateCoinPricesRequests(coins: Coin[], timeStamp: string): Observable<Response>[] {
@@ -78,22 +100,12 @@ export class CryptocompareService {
     return result;
   }
 
-  private createPricesObject(): void {
-    this.coins.forEach(coin => {
-      this.prices[coin.name] = {};
-    });
-  }
-
-  private setPreviousPrice(previousPrice: any, period: Period) {
+  private updatePreviousPrice(prices: any, previousPrice: any, period: Period) {
     const coinPropertyName = Object.keys(previousPrice)[0];
-    this.prices[coinPropertyName].previous = previousPrice[coinPropertyName];
-    this.prices[coinPropertyName].previous.period = period;
-  }
-
-  private setCurrentPrice(currentPrices: any) {
-    Object.keys(currentPrices).forEach(coinName => {
-      this.prices[coinName].current = currentPrices[coinName];
-    });
+    prices[coinPropertyName] = {};
+    prices[coinPropertyName] = previousPrice[coinPropertyName];
+    prices[coinPropertyName].period = period;
+    return prices;
   }
 
   private autoWatchCoinPrices(): void {
@@ -105,14 +117,7 @@ export class CryptocompareService {
 
   private watchCoinPrices(): void {
     this.getCoinPrices().subscribe(res => {
-      this.setCurrentPrice(JSON.parse(res['_body']));
-      this.prices$.next(this.prices);
-    });
-  }
-
-  private autoWatchPeriod(): void {
-    this.periodSelectorService.observePeriod().subscribe(period => {
-      this.getCoinPricesForPeriod(period).subscribe(res => { });
+      this.prices$.next(JSON.parse(res['_body']));
     });
   }
 

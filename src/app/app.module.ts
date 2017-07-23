@@ -13,6 +13,7 @@ import { HttpService } from './shared/services/http.service';
 import { DataService } from './shared/services/data.service';
 import { CoinsService } from './shared/services/coins.service';
 import { CryptocompareService } from './shared/services/cryptocompare.service';
+import { CryptocompareHistoryService } from './shared/services/cryptocompare.history.service';
 import { CurrencySelectorService } from './shared/currency-selector/currency-selector.service';
 import { PeriodSelectorService } from './shared/period-selector/period-selector.service';
 
@@ -31,6 +32,7 @@ import { LayoutModule } from './layout/layout.module';
     DataService,
     CoinsService,
     CryptocompareService,
+    CryptocompareHistoryService,
     CurrencySelectorService,
     PeriodSelectorService
   ],
