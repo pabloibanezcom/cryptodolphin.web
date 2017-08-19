@@ -7,6 +7,7 @@ const portfolioRoutes: Routes = [
         component: PortfolioBaseComponent,
         children: [
             { path: 'dashboard', loadChildren: 'app/layout/portfolio/dashboard/dashboard.module#DashboardModule' },
+            { path: 'live', loadChildren: 'app/layout/portfolio/live/live.module#LiveModule' },
         ]
     }
 ];

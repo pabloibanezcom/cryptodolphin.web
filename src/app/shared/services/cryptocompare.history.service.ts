@@ -16,7 +16,19 @@ export class CryptocompareHistoryService {
 
   getHistory(coins: Coin[], currency: string, period: Period): Observable<any> {
     const requests = this.generateCoinHistoryRequests(coins, currency, period);
-    return Observable.forkJoin(requests);
+    const result = [];
+    return Observable.create(observer => {
+      Observable.forkJoin(requests).subscribe(responses => {
+        responses.forEach((res, i) => {
+          const body = JSON.parse(res['_body']);
+          body.Data.forEach(element => {
+            element.date = this.getDateName(period, element.time);
+          });
+          result.push({data: body.Data, coinName: coins[i].coinName});
+        });
+        observer.next(result);
+      });
+    });
   }
 
   private getHistoryCoin(coin: Coin, currency: string, period: Period): Observable<Response> {
@@ -37,6 +49,10 @@ export class CryptocompareHistoryService {
       result.push(this.getHistoryCoin(coin, currency, period));
     });
     return result;
+  }
+
+  private getDateName(period: Period, ts: number): string {
+    return new Date(ts * 1000).toDateString();
   }
 
 }

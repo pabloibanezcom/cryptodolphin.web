@@ -14,6 +14,7 @@ import { DataService } from './shared/services/data.service';
 import { CoinsService } from './shared/services/coins.service';
 import { CryptocompareService } from './shared/services/cryptocompare.service';
 import { CryptocompareHistoryService } from './shared/services/cryptocompare.history.service';
+import { ChartsService } from './shared/services/charts.service';
 import { CurrencySelectorService } from './shared/currency-selector/currency-selector.service';
 import { PeriodSelectorService } from './shared/period-selector/period-selector.service';
 
@@ -33,6 +34,7 @@ import { LayoutModule } from './layout/layout.module';
     CoinsService,
     CryptocompareService,
     CryptocompareHistoryService,
+    ChartsService,
     CurrencySelectorService,
     PeriodSelectorService
   ],

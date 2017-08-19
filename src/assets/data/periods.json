@@ -16,16 +16,16 @@
     {
         "name": "1 Week",
         "timeStampDiff": 604800,
-        "historyUrl": "histohour",
+        "historyUrl": "histoday",
         "aggregate": 1,
-        "limit": 168
+        "limit": 7
     },
     {
         "name": "1 Month",
         "timeStampDiff": 2592000,
-        "historyUrl": "histohour",
-        "aggregate": 6,
-        "limit": 120
+        "historyUrl": "histoday",
+        "aggregate": 1,
+        "limit": 30
     },
     {
         "name": "3 Months",

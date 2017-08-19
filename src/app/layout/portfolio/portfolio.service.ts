@@ -28,4 +28,33 @@ export class PortfolioService {
     return this.http.get('portfolios/' + this.portfolio.id);
   }
 
+  mergeHistoryPricesWithPortfolio(portfolio: Portfolio, coinsHistory: any[]) {
+    coinsHistory.forEach(coin => {
+      const amount = portfolio.coins.find(c => c.coinName === coin.coinName)['balances'][0].amount;
+      coin.data.forEach(dataElement => {
+        dataElement.portfolio = {
+          value: (dataElement.close * amount).toFixed(2),
+          amount: amount
+        };
+      });
+    });
+    return coinsHistory;
+  }
+
+  getTotals(portfolio: Portfolio, prices: any) {
+    return {
+      currentValue: this.getTotalCurrentValue(portfolio, prices)
+    };
+  }
+
+  private getTotalCurrentValue(portfolio: Portfolio, prices: any) {
+    let value = 0;
+    for (const property in prices) {
+      if (prices.hasOwnProperty(property)) {
+        value = value + prices[property]['USD'] * portfolio.balances[0].coins[property];
+      }
+    }
+    return value;
+  }
+
 }

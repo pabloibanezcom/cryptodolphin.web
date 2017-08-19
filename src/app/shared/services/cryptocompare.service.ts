@@ -45,8 +45,8 @@ export class CryptocompareService {
     return this.pricesObservable$.share();
   }
 
-  coinHistory(currency: string, period: Period): Observable<any> {
-    return this.cryptocompareHistoryService.getHistory(this.coins, currency, period);
+  coinHistory(coins: Coin[], currency: string, period: Period): Observable<any> {
+    return this.cryptocompareHistoryService.getHistory(coins, currency, period);
   }
 
   getCoinPricesForPeriod(coins: Coin[], period: Period): Observable<any> {
@@ -73,6 +73,11 @@ export class CryptocompareService {
     return prices;
   }
 
+  getCoinPrices(coinString: string): Observable<Response> {
+    const coinStr = coinString ? coinString : this.coinsString;
+    return this.http.get(this.baseUrl + '/pricemulti?fsyms=' + coinStr + '&tsyms=' + this.currenciesString);
+  }
+
   private updatePricesFromObject(prices: any, pricesSet: any, timeLabel: string) {
     for (const property in pricesSet) {
         if (pricesSet.hasOwnProperty(property)) {
@@ -82,10 +87,6 @@ export class CryptocompareService {
           prices[property][timeLabel] = pricesSet[property];
         }
       }
-  }
-
-  private getCoinPrices(): Observable<Response> {
-    return this.http.get(this.baseUrl + '/pricemulti?fsyms=' + this.coinsString + '&tsyms=' + this.currenciesString);
   }
 
   private getCoinPricesHistorical(coinCode: string, timeStamp: string): Observable<Response> {
@@ -116,7 +117,7 @@ export class CryptocompareService {
   }
 
   private watchCoinPrices(): void {
-    this.getCoinPrices().subscribe(res => {
+    this.getCoinPrices(null).subscribe(res => {
       this.prices$.next(JSON.parse(res['_body']));
     });
   }

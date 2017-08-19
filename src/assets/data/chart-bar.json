@@ -1,0 +1,22 @@
+{
+    "type": "bar",
+    "legend": true,
+    "scaleShowVerticalLines": false,
+    "responsive": true,
+    "scales": {
+        "xAxes": [
+            {
+                "stacked": true
+            }
+        ],
+        "yAxes": [
+            {
+                "stacked": true
+            }
+        ]
+    },
+    "tooltips": {
+        "mode": "index",
+        "intersect": false
+    }
+}

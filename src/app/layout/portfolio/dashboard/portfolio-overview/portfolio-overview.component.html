@@ -2,23 +2,18 @@
   <div class="ibox float-e-margins">
     <div class="ibox-title">
       <h5>Portfolio Overview</h5>
-      <div class="pull-right">
-        <div class="btn-group">
-          <button type="button" (click)="randomize()" class="btn btn-xs btn-white active">Random</button>
-        </div>
-      </div>
     </div>
     <div class="ibox-content">
       <div class="row">
         <div class="col-lg-9">
-          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-            [chartType]="barChartType" [colors]="colors" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          <canvas *ngIf="options && historyData" baseChart [datasets]="historyData.data" [labels]="historyData.labels" [options]="options" [legend]="options.legend"
+            [chartType]="options.type" [colors]="colors" ></canvas>
         </div>
         <div class="col-lg-3">
           <ul class="stat-list">
             <li>
-              <h2 class="no-margins">2,346</h2>
-              <small>Total orders in period</small>
+              <h2 class="no-margins">44444</h2>
+              <small>Total value</small>
               <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
               <div class="progress progress-mini">
                 <div style="width: 48%;" class="progress-bar"></div>
@@ -26,7 +21,7 @@
             </li>
             <li>
               <h2 class="no-margins ">4,422</h2>
-              <small>Orders in last month</small>
+              <small>Acquisition Cost</small>
               <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
               <div class="progress progress-mini">
                 <div style="width: 60%;" class="progress-bar"></div>
@@ -34,7 +29,7 @@
             </li>
             <li>
               <h2 class="no-margins ">9,180</h2>
-              <small>Monthly income from orders</small>
+              <small>Profit / Loss</small>
               <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
               <div class="progress progress-mini">
                 <div style="width: 22%;" class="progress-bar"></div>
@@ -44,6 +39,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

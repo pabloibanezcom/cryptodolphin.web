@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PortfolioBaseComponent } from './portfolio-base/portfolio-base.component';
 
 import { PortfolioRouting } from './portfolio.routing';
-import { PortfolioService } from './portfolio.service' ;
+import { PortfolioService } from './portfolio.service';
 
 @NgModule({
   imports: [
