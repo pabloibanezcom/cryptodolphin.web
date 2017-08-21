@@ -20,6 +20,10 @@ export class PortfolioService {
     this.portfolio.id = portfolioId;
   }
 
+  getPortfolioId(): string {
+    return this.portfolio.id;
+  }
+
   getPortfolios(): Observable<any> {
     return this.http.get('portfolios');
   }

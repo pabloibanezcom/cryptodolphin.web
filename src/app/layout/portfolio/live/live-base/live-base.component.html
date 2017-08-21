@@ -7,8 +7,14 @@
             <i class="icon-coins fa-5x"></i>
           </div>
           <div class="col-xs-8 text-right" *ngIf="value.total && value.currency">
-            <span> Total value </span>
-            <h2 class="font-bold">{{ value.total | currency:value.currency.code:true:'4.2-2'}}</h2>
+            <div class="total-value">
+              <span> Total value </span>
+              <h2 class="font-bold">{{ value.total | currency:value.currency.code:true:'4.2-2'}}</h2>
+            </div>
+            <div class="personal-pct">
+              <span> {{owner.name}}'s value </span>
+              <h3 class="font-bold">{{ value.total * (owner.pct / 100) | currency:value.currency.code:true:'.2-2'}} <span class="pct">({{owner.pct}}%)</span></h3>       
+            </div>
           </div>
         </div>
       </div>

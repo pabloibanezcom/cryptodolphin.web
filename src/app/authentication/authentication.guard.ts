@@ -13,8 +13,10 @@ export class AuthenticationGuard implements CanActivate {
             return true;
         }
 
+        this.authService.setRequestedUrl(route['_routerState'].url);
+
         // not logged in so redirect to login page with the return url and return false
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         return false;
     }
 }

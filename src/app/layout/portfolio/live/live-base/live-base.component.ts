@@ -7,6 +7,8 @@ import { CryptocompareService } from '../../../../shared/services/cryptocompare.
 import { CurrencySelectorService } from '../../../../shared/currency-selector/currency-selector.service';
 import { Currency } from '../../../../shared/currency-selector/currency';
 
+import { PortfolioService } from '../../portfolio.service';
+
 @Component({
   selector: 'cd-live-base',
   templateUrl: './live-base.component.html',
@@ -15,22 +17,28 @@ import { Currency } from '../../../../shared/currency-selector/currency';
 export class LiveBaseComponent implements OnInit {
 
   public value: any;
+  public owner: any;
 
   constructor(
     private layoutService: LayoutService,
     private dataService: DataService,
     private cryptocompareService: CryptocompareService,
-    private currencySelectorService: CurrencySelectorService
+    private currencySelectorService: CurrencySelectorService,
+    private portfolioService: PortfolioService
   ) {
-    this.clearValue();
+    this.owner = {};
   }
 
   ngOnInit() {
-    this.dataService.get('live').subscribe(balance => {
+    this.clearValue();
+    this.owner.name = this.portfolioService.getPortfolioId();
+    this.dataService.get('live').subscribe(live => {
+      //Get owner data
+      this.owner.pct = live.owners[this.owner.name];
       // Currency changes
       this.currencySelectorService.observeCurrency().subscribe(currency => {
         if (currency.code) {
-          this.generateValue(balance, currency);
+          this.generateValue(live.coins, currency);
         }
       });
     });

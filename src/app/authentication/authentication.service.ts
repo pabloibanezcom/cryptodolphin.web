@@ -9,6 +9,7 @@ import { AuthData } from './authData';
 export class AuthenticationService {
 
   authData: AuthData;
+  requestedUrl: string;
 
   constructor(
     private fb: FacebookService,
@@ -48,12 +49,17 @@ export class AuthenticationService {
     localStorage.removeItem('auth');
   }
 
+  public setRequestedUrl(url: string): void {
+    this.requestedUrl = url;
+  }
+
   // Facebook API call for getting user data
   private getFacebookData(response: LoginResponse) {
     this.authData = new AuthData(response.authResponse.accessToken,
       response.authResponse.userID, this.getExpirationDate(response.authResponse.expiresIn));
     localStorage.setItem('auth', JSON.stringify(this.authData));
-    this.router.navigate(['/portfolio']);
+    const url = this.requestedUrl === '' || !this.requestedUrl ? '/portfolio' : this.requestedUrl;
+    this.router.navigate([this.requestedUrl]);
   }
 
   private getExpirationDate(expiresIn: number): Date {
