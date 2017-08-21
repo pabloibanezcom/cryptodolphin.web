@@ -45,10 +45,10 @@ export class LiveBaseComponent implements OnInit {
   }
 
   generateValue(balance: any, currency: Currency) {
-    this.clearValue();
     this.value.currency = currency;
     const requests = this.generateRequests(balance);
     Observable.forkJoin(requests).subscribe(responses => {
+      this.value['total'] = 0;
       responses.forEach((res, i) => {
         const body = JSON.parse(res['_body']);
         const coinCode = Object.keys(body)[0];
