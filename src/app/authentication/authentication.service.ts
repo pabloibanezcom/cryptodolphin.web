@@ -59,7 +59,7 @@ export class AuthenticationService {
       response.authResponse.userID, this.getExpirationDate(response.authResponse.expiresIn));
     localStorage.setItem('auth', JSON.stringify(this.authData));
     const url = this.requestedUrl === '' || !this.requestedUrl ? '/portfolio' : this.requestedUrl;
-    this.router.navigate([this.requestedUrl]);
+    this.router.navigate([url]);
   }
 
   private getExpirationDate(expiresIn: number): Date {
